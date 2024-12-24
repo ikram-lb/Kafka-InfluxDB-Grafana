@@ -35,58 +35,8 @@ Actuellement, le système implémente les règles suivantes :
   }
   ```
 ## Structure du Projet
-flowchart LR
-    subgraph Input["Sources de données"]
-        DP["Data Producer\n(Transactions JSON)"]
-        style DP fill:#f9f,stroke:#333,stroke-width:2px
-    end
-
-    subgraph Kafka["Ecosystem Kafka"]
-        TI["Topic:\ntransactions-input"] --> KS["Kafka Streams\nApplication"]
-        KS --> FA["Topic:\nfraud-alerts"]
-        
-        subgraph KSDetails["Kafka Streams Processing"]
-            direction TB
-            FD["Détection de Fraude\n(amount > 10000)"]
-            ST["State Store\n(Agrégations)"]
-        end
-    end
-
-    subgraph Storage["Stockage des données"]
-        IDB[("InfluxDB\n(Time Series DB)")]
-    end
-
-    subgraph Visualisation["Monitoring & Visualisation"]
-        GD["Grafana Dashboards"]
-        subgraph Metrics["Métriques en temps réel"]
-            M1["Transactions suspectes\npar utilisateur"]
-            M2["Montant total\npar période"]
-        end
-    end
-
-    subgraph Deploy["Déploiement"]
-        DC["Docker Compose:\n- Kafka\n- InfluxDB\n- Grafana"]
-    end
-
-    DP --> TI
-    KS --> FD
-    FD <--> ST
-    FA --> IDB
-    IDB --> GD
-    GD --> M1
-    GD --> M2
     
-    classDef kafka fill:#232F3E,stroke:#232F3E,color:#fff
-    classDef storage fill:#22ADF6,stroke:#22ADF6,color:#fff
-    classDef monitoring fill:#F46800,stroke:#F46800,color:#fff
-    classDef deployment fill:#2496ED,stroke:#2496ED,color:#fff
-    
-    class TI,KS,FA,FD,ST kafka
-    class IDB storage
-    class GD,M1,M2 monitoring
-    class DC deployment
-
-
+  <img width="464" alt="image" src="https://github.com/user-attachments/assets/7d86542a-0170-4cfc-81f4-7ed0d6d54a60" />
 
 ### Étapes de Déploiement
 
@@ -102,6 +52,10 @@ flowchart LR
      kafka-topics --create --bootstrap-server localhost:9092 --topic transactions-input --partitions 3 --replication-factor 1
      kafka-topics --create --bootstrap-server localhost:9092 --topic fraud-alerts --partitions 3 --replication-factor 1
    ```
+ #### Test kafka Producer-Consumer 
+   <img width="554" alt="Topic-producer" src="https://github.com/user-attachments/assets/a02c3aed-ce84-41f7-b8c5-208ce14ca7c8" />
+
+   <img width="630" alt="Topic-Consummer" src="https://github.com/user-attachments/assets/c4f26077-35c4-4d5b-b21f-ab022e339616" />
 
 ### Configuration de Grafana et InfluxDB in docker compose file 
 
