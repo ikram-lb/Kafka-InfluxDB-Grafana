@@ -34,12 +34,13 @@ Actuellement, le système implémente les règles suivantes :
     "timestamp": "2024-12-04T15:00:00Z"
   }
   ```
-## Structure du Projet
+## Architechture du Projet
     
   <img width="464" alt="image" src="https://github.com/user-attachments/assets/7d86542a-0170-4cfc-81f4-7ed0d6d54a60" />
 
 ### Étapes de Déploiement
 
+<img width="649" alt="image" src="https://github.com/user-attachments/assets/9b8d41f8-80c1-4c44-b8cb-1095aaf76e38" />
 
 2. **Lancer l'environnement**
    ```bash
@@ -59,8 +60,11 @@ Actuellement, le système implémente les règles suivantes :
 
 ### Configuration de Grafana et InfluxDB in docker compose file 
 
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/6bf9d18b-aa0c-489a-9edb-537f6124caad" />
 
 3. **Monitorer dans Grafana**
+   <img width="959" alt="image" src="https://github.com/user-attachments/assets/ae7460d3-92c8-4b87-83db-214f292ee1fe" />
+
    
 
 
